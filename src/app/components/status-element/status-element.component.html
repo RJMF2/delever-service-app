@@ -1,0 +1,32 @@
+<div class="container">
+  <div [ngClass]="{ complete: statusNumber >= 1 }">
+    <div class="main-circle">
+      <p class="number">1</p>
+    </div>
+    <p class="status-name">معلق</p>
+  </div>
+  <div [ngClass]="{ complete: statusNumber >= 2 }">
+    <div class="main-circle">
+      <p class="number">2</p>
+    </div>
+    <p class="status-name">بالطريق</p>
+  </div>
+  <div [ngClass]="{ complete: statusNumber >= 3 }">
+    <div class="main-circle">
+      <p class="number">3</p>
+    </div>
+    <p class="status-name">وصل</p>
+  </div>
+  <div [ngClass]="{ complete: statusNumber >= 4 }">
+    <div class="main-circle">
+      <p class="number">4</p>
+    </div>
+    <p class="status-name">يعمل</p>
+  </div>
+  <div [ngClass]="{ complete: statusNumber >= 5 }">
+    <div class="last-node">
+      <p class="number">5</p>
+    </div>
+    <p class="status-name">مكتمل</p>
+  </div>
+</div>

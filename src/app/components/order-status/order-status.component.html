@@ -1,0 +1,23 @@
+<div>
+  <app-status-element
+    [statusNumber]="serviceStatus.statusId"
+  ></app-status-element>
+
+  <mgl-map
+    class="map"
+    [style]="'mapbox://styles/mapbox/streets-v9'"
+    [zoom]="[15]"
+    [center]="[31.234356822795462, 30.046183159482666]"
+  >
+    <mgl-marker
+      [lngLat]="[currentServantLocation.lng, currentServantLocation.lat]"
+    >
+      <img
+        src="assets/images/location-pin.png"
+        class="marker"
+        alt=""
+        srcset=""
+      />
+    </mgl-marker>
+  </mgl-map>
+</div>
