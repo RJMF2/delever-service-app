@@ -1,2 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~mapbox-gl/dist/mapbox-gl.css';
+@import "~mapbox-gl/dist/mapbox-gl.css";
+
+.main-map-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 650px;
+  p {
+    font-size: 18px;
+    color: gray;
+  }
+  mgl-map {
+    height: 600px;
+    width: 600px;
+  }
+
+  .marker {
+    width: 30px;
+    height: 30px;
+  }
+
+  .buttons-container {
+    box-sizing: border-box;
+    padding: 20px 50px;
+    width: 100%;
+    text-align: right;
+    .btn {
+      background-color: #0d6efd;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 10px;
+      margin: 10px 5px;
+      color: white;
+      cursor: pointer;
+      :hover {
+        background-color: #508eeb;
+      }
+    }
+  }
+}

@@ -27,11 +27,9 @@ export class OrderStatusComponent implements OnInit {
       this.service.id
     );
 
-    if (this.serviceStatus.statusId === 2) {
-      this.getCurrentServantLocation();
-      // api location change simulation;
-      this.orderStatusService.emitNewLocation();
-    }
+    this.getCurrentServantLocation();
+    // api location change simulation;
+    this.orderStatusService.emitNewLocation();
   }
 
   //this function sets the current servant location variable
@@ -39,5 +37,17 @@ export class OrderStatusComponent implements OnInit {
     this.orderStatusService.currentServantLocation$.subscribe((value) => {
       this.currentServantLocation = value;
     });
+  }
+
+  public cancelService(): void {
+    //this should call the end point for canceling the service
+  }
+
+  public callServant(): void {
+    //this should call the servant
+  }
+
+  public rollBack(): void {
+    //this function should roll back the service
   }
 }

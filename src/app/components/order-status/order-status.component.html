@@ -1,9 +1,42 @@
-<div>
+<div class="main-map-container">
+  <p>You can track your service from here</p>
   <app-status-element
     [statusNumber]="serviceStatus.statusId"
   ></app-status-element>
 
-  <div></div>
+  <div class="servant-card-container">
+    <div class="servant-card">
+      <div class="image">
+        <img [src]="serviceStatus.servantImage" alt="servant profile image" />
+      </div>
+      <div class="servant-info">
+        <p>{{ serviceStatus.servantName }}</p>
+        <p>
+          <img src="assets/images/star.png" alt="star image" />{{
+            serviceStatus.servantRate
+          }}
+        </p>
+      </div>
+    </div>
+    <div>
+      <div
+        class="service-buttons-container"
+        *ngIf="serviceStatus.statusId <= 2"
+      >
+        <button (click)="cancelService()" class="btn danger">cancel</button>
+        <button (click)="callServant()" class="btn success">
+          call servant
+        </button>
+      </div>
+
+      <div
+        class="service-buttons-container"
+        *ngIf="serviceStatus.statusId === 3"
+      >
+        <button (click)="rollBack()" class="btn danger">Roll back</button>
+      </div>
+    </div>
+  </div>
 
   <mgl-map
     class="map"
@@ -12,14 +45,14 @@
     [center]="[31.234356822795462, 30.046183159482666]"
   >
     <mgl-marker
+      *ngIf="serviceStatus.statusId === 2"
       [lngLat]="[currentServantLocation.lng, currentServantLocation.lat]"
     >
-      <img
-        src="assets/images/location-pin.png"
-        class="marker"
-        alt=""
-        srcset=""
-      />
+      <img src="assets/images/pin.png" class="marker" />
     </mgl-marker>
   </mgl-map>
+
+  <div class="buttons-container">
+    <button class="btn" routerLink="/">Back</button>
+  </div>
 </div>

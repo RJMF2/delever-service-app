@@ -11,6 +11,8 @@ export class OrderStatusService {
     lat: this.lat,
   });
 
+  private locationInterval: any;
+
   public currentServantLocation$ = this.currentServantLocation.asObservable();
 
   public getCurrentServiceStatus(serviceId: string) {
@@ -19,18 +21,32 @@ export class OrderStatusService {
       serviceId,
       statusName: 'في الطريق',
       statusId: 2,
+      servantName: 'محمد فوزي',
+      servantRate: 4.8,
+      servantImage: 'assets/images/profile-image.jpg',
     };
   }
 
   public emitNewLocation() {
+    if (this.locationInterval) {
+      return;
+    }
     //this method just updates the location to simulate getting the location from the api each period of time
-    setInterval(() => {
-      this.lng -= 0.000002;
-      this.lat -= 0.000002;
+    this.locationInterval = setInterval(() => {
+      this.lng -= 0.00001;
+      this.lat -= 0.00001;
       this.currentServantLocation.next({
         lng: this.lng,
         lat: this.lat,
       });
-    }, 1000);
+    }, 500);
   }
+
+  //this commented function can be used to reset the location and clear interval
+
+  // public stopInterval() {
+  //   this.lng = 31.235657230204476;
+  //   this.lat = 30.04685895909824;
+  //   clearInterval(this.locationInterval);
+  // }
 }
