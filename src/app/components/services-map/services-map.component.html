@@ -22,12 +22,7 @@
         *ngFor="let service of filteredServices"
         [lngLat]="[service.lng, service.lat]"
       >
-        <img
-          src="assets/images/location-pin.png"
-          class="marker"
-          alt=""
-          srcset=""
-        />
+        <img src="assets/images/pin.png" class="marker" alt="" srcset="" />
         <mgl-popup
           [lngLat]="[service.lng, service.lat]"
           [closeButton]="false"
