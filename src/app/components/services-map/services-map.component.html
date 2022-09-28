@@ -1,30 +1,47 @@
-<mgl-map
-  class="map"
-  [style]="'mapbox://styles/mapbox/streets-v9'"
-  [zoom]="[15]"
-  [center]="[31.234356822795462, 30.046183159482666]"
-  (mapClick)="mapClicked($event)"
->
-  <mgl-marker [lngLat]="[lng, lat]">
-    <img src="assets/images/location-pin.png" class="marker" alt="" srcset="" />
-  </mgl-marker>
-
-  <mgl-marker
-    #myMarker
-    *ngFor="let service of filteredServices"
-    [lngLat]="[service.lng, service.lat]"
-  >
-    <img src="assets/images/location-pin.png" class="marker" alt="" srcset="" />
-    <mgl-popup
-      [lngLat]="[service.lng, service.lat]"
-      [closeButton]="false"
-      [closeOnClick]="false"
-      [closeOnMove]="false"
+<div class="shadow-container">
+  <div class="main-map-container">
+    <p>Please pick a place to check it's services</p>
+    <mgl-map
+      class="map"
+      [style]="'mapbox://styles/mapbox/streets-v9'"
+      [zoom]="[15]"
+      [center]="[31.234356822795462, 30.046183159482666]"
+      (mapClick)="mapClicked($event)"
     >
-      {{ service.name }}
-    </mgl-popup>
-  </mgl-marker>
-</mgl-map>
+      <mgl-marker [lngLat]="[lng, lat]">
+        <img
+          src="assets/images/location-pin.png"
+          class="marker"
+          alt=""
+          srcset=""
+        />
+      </mgl-marker>
 
-<button (click)="selectService()">Select Service</button>
-<button routerLink="/order-status">Next</button>
+      <mgl-marker
+        #myMarker
+        *ngFor="let service of filteredServices"
+        [lngLat]="[service.lng, service.lat]"
+      >
+        <img
+          src="assets/images/location-pin.png"
+          class="marker"
+          alt=""
+          srcset=""
+        />
+        <mgl-popup
+          [lngLat]="[service.lng, service.lat]"
+          [closeButton]="false"
+          [closeOnClick]="false"
+          [closeOnMove]="false"
+        >
+          {{ service.name }}
+        </mgl-popup>
+      </mgl-marker>
+    </mgl-map>
+
+    <div class="buttons-container">
+      <button class="btn" (click)="selectService()">Select Service</button>
+      <button class="btn" routerLink="/order-status">Next</button>
+    </div>
+  </div>
+</div>
